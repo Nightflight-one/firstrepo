@@ -1,5 +1,5 @@
 from flask import Flask, render_template
-import random
+import random, time
 
 app = Flask(__name__)
 
@@ -23,7 +23,8 @@ images = [
 @app.route('/')
 def index():
     url = random.choice(images)
-    return render_template('index.html', url=url)
+    akttime = time.strftime("%d.%m.%Y %H:%M:%S")
+    return render_template('index.html', url=url, akttime=akttime)
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0")
